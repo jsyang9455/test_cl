@@ -3,6 +3,11 @@
  */
 const Validator = (() => {
   const EMAIL_REGEX = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+  const NAME_REGEX  = /^[가-힣a-zA-Z\s]+$/;
+
+  const MAX_NAME_LENGTH     = 10;
+  const MIN_PASSWORD_LENGTH = 8;
+  const MAX_PASSWORD_LENGTH = 64;
 
   function validateEmail(value) {
     if (!value.trim()) return '이메일을 입력해 주세요.';
@@ -13,14 +18,15 @@ const Validator = (() => {
   function validateName(value) {
     const trimmed = value.trim();
     if (!trimmed) return '이름을 입력해 주세요.';
-    if (trimmed.length > 10) return '이름은 10자 이내로 입력해 주세요.';
+    if (trimmed.length > MAX_NAME_LENGTH) return `이름은 ${MAX_NAME_LENGTH}자 이내로 입력해 주세요.`;
+    if (!NAME_REGEX.test(trimmed)) return '이름은 한글 또는 영문만 입력해 주세요.';
     return null;
   }
 
   function validatePassword(value) {
     if (!value) return '비밀번호를 입력해 주세요.';
-    if (value.length < 4) return '비밀번호는 최소 4자 이상이어야 합니다.';
-    if (value.length > 10) return '비밀번호는 10자 이내로 입력해 주세요.';
+    if (value.length < MIN_PASSWORD_LENGTH) return `비밀번호는 최소 ${MIN_PASSWORD_LENGTH}자 이상이어야 합니다.`;
+    if (value.length > MAX_PASSWORD_LENGTH) return `비밀번호는 ${MAX_PASSWORD_LENGTH}자 이내로 입력해 주세요.`;
     return null;
   }
 
@@ -43,7 +49,7 @@ const Validator = (() => {
     if (!password) return { score: 0, label: '', color: '' };
     let score = 0;
     if (password.length >= 6) score++;
-    if (/[A-Z]/.test(password) || /[a-z]/.test(password)) score++;
+    if (/[A-Za-z]/.test(password)) score++;
     if (/[0-9]/.test(password)) score++;
     if (/[^A-Za-z0-9]/.test(password)) score++;
 
