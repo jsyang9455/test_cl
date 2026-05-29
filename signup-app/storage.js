@@ -4,10 +4,13 @@
  */
 const UserStorage = (() => {
   const KEY = 'healthcare_users';
+  let cache = null;
 
   function getAll() {
+    if (cache) return cache;
     try {
-      return JSON.parse(localStorage.getItem(KEY) || '[]');
+      cache = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return cache;
     } catch {
       return [];
     }
@@ -16,11 +19,12 @@ const UserStorage = (() => {
   function save(users) {
     try {
       localStorage.setItem(KEY, JSON.stringify(users));
-    } catch (e) {
-      if (e.name === 'QuotaExceededError') {
+      cache = users;
+    } catch (err) {
+      if (err.name === 'QuotaExceededError') {
         throw new Error('저장 공간이 부족합니다. 브라우저 저장소를 확인해 주세요.');
       }
-      throw e;
+      throw err;
     }
   }
 

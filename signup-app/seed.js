@@ -3,8 +3,8 @@
  * 페이지 로드 시 localStorage에 계정이 없으면 생성
  */
 (async () => {
-  const TEST_EMAIL    = 'aa@aa.co';
-  const TEST_PASSWORD = '1111111111';
+  const TEST_EMAIL    = 'test@example.com';
+  const TEST_PASSWORD = 'Test1234!';
   const TEST_NAME     = '테스트';
 
   if (!UserStorage.isEmailTaken(TEST_EMAIL)) {
@@ -15,6 +15,6 @@
       passwordHash: hash,
       passwordSalt: salt,
     });
-    console.log('[seed] 테스트 계정 생성 완료:', TEST_EMAIL);
+    console.log('[seed] 테스트 계정 생성 완료');
   }
 })();
