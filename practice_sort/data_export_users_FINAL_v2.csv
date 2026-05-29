@@ -1,0 +1,7 @@
+id,name,email,join_date,plan,active
+1,김철수,chulsoo@mail.com,2023-01-15,pro,true
+2,박영희,younghee@mail.com,2023-03-22,free,true
+3,이강산,gangsan@mail.com,2022-11-08,pro,false
+4,최다은,daeun@mail.com,2024-02-14,enterprise,true
+5,정민기,minki@mail.com,2023-07-30,free,true
+6,한소희,sohee@mail.com,2024-01-01,pro,true

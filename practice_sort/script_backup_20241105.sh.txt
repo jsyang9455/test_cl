@@ -1,0 +1,14 @@
+#!/bin/bash
+# 데이터베이스 백업 스크립트 (2024-11-05 버전)
+
+BACKUP_DIR="/var/backups/db"
+DATE=$(date +%Y%m%d_%H%M%S)
+DB_NAME="production_db"
+
+mkdir -p $BACKUP_DIR
+pg_dump $DB_NAME > "$BACKUP_DIR/backup_$DATE.sql"
+
+# 7일 이상된 백업 삭제
+find $BACKUP_DIR -name "*.sql" -mtime +7 -delete
+
+echo "백업 완료: $BACKUP_DIR/backup_$DATE.sql"
