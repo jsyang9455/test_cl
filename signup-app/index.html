@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- 회원가입 카드 -->
+  <main class="card" id="signupCard">
+    <div class="card-header">
+      <div class="logo">🏥</div>
+      <h1>회원가입</h1>
+      <p class="subtitle">헬스케어 서비스에 오신 것을 환영합니다</p>
+    </div>
+
+    <form id="signupForm" novalidate>
+
+      <!-- 이메일 -->
+      <div class="field" id="field-email">
+        <label for="email">이메일</label>
+        <div class="input-wrap">
+          <span class="icon">✉️</span>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            maxlength="100"
+            autocomplete="email"
+          />
+        </div>
+        <span class="error-msg" id="err-email" aria-live="polite"></span>
+      </div>
+
+      <!-- 이름 -->
+      <div class="field" id="field-name">
+        <label for="name">이름</label>
+        <div class="input-wrap">
+          <span class="icon">👤</span>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름 (10자 이내)"
+            maxlength="10"
+            autocomplete="name"
+          />
+        </div>
+        <div class="field-meta">
+          <span class="error-msg" id="err-name" aria-live="polite"></span>
+          <span class="char-count" id="cnt-name">0 / 10</span>
+        </div>
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="field" id="field-password">
+        <label for="password">비밀번호</label>
+        <div class="input-wrap">
+          <span class="icon">🔒</span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호 (10자 이내)"
+            maxlength="10"
+            autocomplete="new-password"
+          />
+          <button type="button" class="eye-btn" id="togglePw" aria-label="비밀번호 표시">👁</button>
+        </div>
+        <div class="field-meta">
+          <span class="error-msg" id="err-password" aria-live="polite"></span>
+          <span class="char-count" id="cnt-password">0 / 10</span>
+        </div>
+        <div class="strength-bar" id="strengthWrap">
+          <div class="strength-fill" id="strengthFill"></div>
+        </div>
+        <span class="strength-label" id="strengthLabel"></span>
+      </div>
+
+      <!-- 비밀번호 확인 -->
+      <div class="field" id="field-passwordConfirm">
+        <label for="passwordConfirm">비밀번호 확인</label>
+        <div class="input-wrap">
+          <span class="icon">🔐</span>
+          <input
+            type="password"
+            id="passwordConfirm"
+            name="passwordConfirm"
+            placeholder="비밀번호를 다시 입력하세요"
+            maxlength="10"
+            autocomplete="new-password"
+          />
+        </div>
+        <span class="error-msg" id="err-passwordConfirm" aria-live="polite"></span>
+      </div>
+
+      <!-- 이용약관 -->
+      <div class="field checkbox-field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="agree" name="agree" />
+          <span class="checkmark"></span>
+          <span>이용약관 및 개인정보처리방침에 동의합니다</span>
+        </label>
+        <span class="error-msg" id="err-agree" aria-live="polite"></span>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span id="btnText">가입하기</span>
+        <span id="btnSpinner" class="spinner hidden"></span>
+      </button>
+    </form>
+
+    <p class="login-link">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+  </main>
+
+  <!-- 성공 팝업 -->
+  <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup">
+      <div class="popup-icon">🎉</div>
+      <h2 id="popupTitle">가입 완료!</h2>
+      <p class="popup-msg">환영합니다, <strong id="popupName"></strong>님!</p>
+      <p class="popup-sub">이메일 <em id="popupEmail"></em>으로<br>가입이 정상적으로 완료되었습니다.</p>
+      <div class="popup-badge">✅ 계정이 안전하게 저장되었습니다</div>
+      <button class="btn-confirm" id="confirmBtn">확인</button>
+    </div>
+  </div>
+
+  <script src="crypto.js"></script>
+  <script src="validator.js"></script>
+  <script src="storage.js"></script>
+  <script src="seed.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

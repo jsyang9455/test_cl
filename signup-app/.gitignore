@@ -1,0 +1,11 @@
+# 브라우저/OS 임시 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 에디터 설정
+.vscode/
+.idea/
+
+# 로그
+*.log

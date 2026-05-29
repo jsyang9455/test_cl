@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <!-- 로그인 카드 -->
+  <main class="card" id="loginCard">
+    <div class="card-header">
+      <div class="logo">🏥</div>
+      <h1>로그인</h1>
+      <p class="subtitle">헬스케어 서비스에 오신 것을 환영합니다</p>
+    </div>
+
+    <!-- 로그인 에러 배너 -->
+    <div class="alert-banner hidden" id="alertBanner" role="alert" aria-live="assertive">
+      <span class="alert-icon">⚠️</span>
+      <span id="alertMsg"></span>
+    </div>
+
+    <form id="loginForm" novalidate>
+
+      <!-- 이메일 -->
+      <div class="field" id="field-email">
+        <label for="email">이메일</label>
+        <div class="input-wrap">
+          <span class="icon">✉️</span>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            maxlength="100"
+            autocomplete="email"
+          />
+        </div>
+        <span class="error-msg" id="err-email" aria-live="polite"></span>
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="field" id="field-password">
+        <label for="password">비밀번호</label>
+        <div class="input-wrap">
+          <span class="icon">🔒</span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호를 입력하세요"
+            maxlength="10"
+            autocomplete="current-password"
+          />
+          <button type="button" class="eye-btn" id="togglePw" aria-label="비밀번호 표시">👁</button>
+        </div>
+        <span class="error-msg" id="err-password" aria-live="polite"></span>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span id="btnText">로그인</span>
+        <span id="btnSpinner" class="spinner hidden"></span>
+      </button>
+    </form>
+
+    <!-- 페이지 이동 링크 -->
+    <div class="page-links">
+      <p>계정이 없으신가요? <a href="index.html" class="link-signup">회원가입</a></p>
+    </div>
+
+    <!-- 테스트 계정 안내 (개발/테스트 환경 전용) -->
+    <div class="test-account-box">
+      <p class="test-label">🧪 테스트 계정</p>
+      <p>이메일: <strong>aa@aa.co</strong></p>
+      <p>비밀번호: <strong>1111111111</strong></p>
+    </div>
+  </main>
+
+  <!-- 로그인 성공 팝업 -->
+  <div class="overlay hidden" id="overlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup">
+      <div class="popup-icon">👋</div>
+      <h2 id="popupTitle">로그인 성공!</h2>
+      <p class="popup-msg">환영합니다, <strong id="popupName"></strong>님!</p>
+      <p class="popup-sub">이메일 <em id="popupEmail"></em>으로<br>성공적으로 로그인되었습니다.</p>
+      <div class="popup-badge">✅ 인증이 완료되었습니다</div>
+      <button class="btn-confirm" id="confirmBtn">확인</button>
+    </div>
+  </div>
+
+  <!-- 재사용 모듈 -->
+  <script src="crypto.js"></script>
+  <script src="storage.js"></script>
+  <script src="seed.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

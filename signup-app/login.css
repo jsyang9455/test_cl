@@ -1,0 +1,62 @@
+/* ── 로그인 전용 추가 스타일 ── */
+
+/* 에러 배너 */
+.alert-banner {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: .88rem;
+  color: #dc2626;
+  animation: shake .35s ease;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+.alert-icon { font-size: 1rem; flex-shrink: 0; }
+
+/* 페이지 이동 링크 영역 */
+.page-links {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: .88rem;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.page-links a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+.page-links a:hover { text-decoration: underline; }
+
+/* 테스트 계정 안내 박스 */
+.test-account-box {
+  margin-top: 1.25rem;
+  padding: .75rem 1rem;
+  background: #fffbeb;
+  border: 1px dashed #f59e0b;
+  border-radius: 10px;
+  font-size: .82rem;
+  color: #92400e;
+  text-align: center;
+  line-height: 1.8;
+}
+.test-label {
+  font-weight: 700;
+  margin-bottom: .2rem;
+  color: #b45309;
+}
+
+/* 로그인 성공 팝업 — 색상만 재정의 */
+#overlay .popup-icon { font-size: 3.5rem; }
